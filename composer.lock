@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "65428017faaac12dda0fdfce245b6aeb",
-    "content-hash": "3b1cee80490c4c66c72482e0c0b007f0",
+    "hash": "092e7acec618138c8a2b0a90f3e53070",
+    "content-hash": "e3ce87f723772838339f5fcaee09b5d3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -3264,11 +3264,17 @@
         },
         {
             "name": "sofa/laravel-kahlan",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
-                "url": "/home/jarek/repos/laravel-kahlan",
-                "reference": "067608106245b1e8ac4e71ab877d455fc15d4b86"
+                "url": "https://github.com/jarektkaczyk/laravel-kahlan.git",
+                "reference": "5b585525694f776bcc3f9baaa80d5957179c1850"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jarektkaczyk/laravel-kahlan/zipball/5b585525694f776bcc3f9baaa80d5957179c1850",
+                "reference": "5b585525694f776bcc3f9baaa80d5957179c1850",
+                "shasum": ""
             },
             "require": {
                 "crysalead/kahlan": "^2.5",
@@ -3281,6 +3287,7 @@
                     "Sofa\\LaravelKahlan\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3291,7 +3298,7 @@
                 }
             ],
             "description": "Kahlan specs suite for Laravel application testing",
-            "time": "2016-08-16 05:48:22"
+            "time": "2016-08-16 06:57:02"
         },
         {
             "name": "symfony/yaml",
@@ -3395,9 +3402,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "sofa/laravel-kahlan": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

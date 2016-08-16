@@ -8,6 +8,6 @@
 4. enjoy!
 
 
-The package itself is available on packagist as [sofa/laravel-kahlan](https://packagist.org/packages/sofa/laravel-kahlan) and on github [https://github.com/jarektkaczyk/laravel-kahlan].
+The package itself is available on packagist as [sofa/laravel-kahlan](https://packagist.org/packages/sofa/laravel-kahlan) and on github https://github.com/jarektkaczyk/laravel-kahlan.
 
 Description of this example is provided in the `/spec/AppSpec.php`.

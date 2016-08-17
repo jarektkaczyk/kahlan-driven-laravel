@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "17305a6dd494a69fabd54bf6e8fffe9d",
-    "content-hash": "8590ceeb93631fa1815928de23258a58",
+    "hash": "d8f991c4a77603b6b890e83ef38cd703",
+    "content-hash": "19ded4872e27f42d8ba20c1bf808073d",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1859,6 +1859,57 @@
     ],
     "packages-dev": [
         {
+            "name": "crysalead/kahlan",
+            "version": "2.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crysalead/kahlan.git",
+                "reference": "cf1bd43766d8ca98d5824065e57aabeb9aed8149"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crysalead/kahlan/zipball/cf1bd43766d8ca98d5824065e57aabeb9aed8149",
+                "reference": "cf1bd43766d8ca98d5824065e57aabeb9aed8149",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "bin": [
+                "bin/kahlan"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kahlan\\": "src/"
+                },
+                "files": [
+                    "src/init.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CrysaLEAD"
+                }
+            ],
+            "description": "Behavior-Driven Development (BDD) library.",
+            "keywords": [
+                "BDD",
+                "Behavior-Driven Development",
+                "Monkey Patching",
+                "TDD",
+                "mock",
+                "stub",
+                "testing",
+                "unit test"
+            ],
+            "time": "2016-08-12 22:41:37"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -2644,16 +2695,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.2.3",
+            "version": "3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "b13d0d9426ced06958bd32104653526a6c998a52"
+                "reference": "4e83390f64e7ce04fcaec2ce95cd72823b431d19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/b13d0d9426ced06958bd32104653526a6c998a52",
-                "reference": "b13d0d9426ced06958bd32104653526a6c998a52",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/4e83390f64e7ce04fcaec2ce95cd72823b431d19",
+                "reference": "4e83390f64e7ce04fcaec2ce95cd72823b431d19",
                 "shasum": ""
             },
             "require": {
@@ -2699,7 +2750,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-06-12 07:37:26"
+            "time": "2016-08-17 09:33:51"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -3213,6 +3264,45 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-02-04 12:56:52"
+        },
+        {
+            "name": "sofa/laravel-kahlan",
+            "version": "v5.3",
+            "source": {
+                "type": "git",
+                "url": "/home/jarek/repos/laravel-kahlan",
+                "reference": "864258a3f2c63b31c4487c658f750da489dac877"
+            },
+            "require": {
+                "crysalead/kahlan": "^2.5",
+                "laravel/framework": "5.3.*",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sofa\\LaravelKahlan\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jarek Tkaczyk",
+                    "email": "jarek@softonsofa.com"
+                }
+            ],
+            "description": "Kahlan specs suite for testing Laravel applications",
+            "keywords": [
+                "bdd",
+                "kahlan",
+                "laravel",
+                "spec",
+                "tdd",
+                "testing"
+            ],
+            "time": "2016-08-17 09:51:08"
         },
         {
             "name": "symfony/css-selector",

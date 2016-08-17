@@ -1,7 +1,5 @@
 <?php
 
-use Kahlan\Plugin\Monkey;
-use Sofa\LaravelKahlan\Env;
 use Illuminate\Contracts\Foundation\Application;
 
 describe('Laravel context for kahlan specs', function () {
@@ -58,7 +56,8 @@ describe('Laravel context for kahlan specs', function () {
     context('It provides the same testing API as laravel TestCase', function () {
         it('crawls & asserts', function () {
             $this->laravel->get('/')
-                          ->see('Laravel 5')
+                          ->see('Laravel')
+                          ->see('Documentation')
                           ->assertResponseOk();
         });
 

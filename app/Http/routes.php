@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+get('admin', function () {
+    return 'admin area for logged in user only';
+})->middleware('auth');
+
+get('login', function () {
+    return 'login form for guests only';
+})->middleware('guest');

@@ -1,9 +1,18 @@
 <?php
 
+use Kahlan\Plugin\Monkey;
 use Sofa\LaravelKahlan\Env;
 use Illuminate\Contracts\Foundation\Application;
 
 describe('Laravel context for kahlan specs', function () {
+
+    // Let's (re)create the DB as starting point,
+    // because it gets wiped at the end, when
+    // we use database migrations wrappers.
+    before(function () {
+        // $this->laravel is just a convenient alias for $this->crawler.
+        $this->laravel->artisan('migrate');
+    });
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +73,7 @@ describe('Laravel context for kahlan specs', function () {
     |
     |--------------------------------------------------------------------------
     */
-    using(['database migrations', 'database transactions'], function () {
+    using(['database transactions'], function () {
 
         it('can wrap db operations in transaction', function () {
             factory(App\User::class)->create(['email' => 'some@email.com']);
@@ -72,6 +81,33 @@ describe('Laravel context for kahlan specs', function () {
         });
 
         it('then rolls back transaction', function () {
+            expect(App\User::where('email', 'some@email.com')->exists())->toBe(false);
+        });
+    });
+
+    using('without middleware', function () {
+        it('runs without middleware on demand (auth)', function () {
+            $this->crawler
+                 ->get('admin')
+                 ->see('admin area for logged in user only');
+        });
+
+        it('runs without middleware on demand (guest)', function () {
+            $this->laravel
+                 ->actingAs(factory(App\User::class)->create())
+                 ->get('login')
+                 ->see('login form for guests only');
+        });
+    });
+
+    using(['database migrations'], function () {
+
+        it('can migrate db for...', function () {
+            factory(App\User::class)->create(['email' => 'some@email.com']);
+            expect(App\User::where('email', 'some@email.com')->exists())->toBe(true);
+        });
+
+        it('...each single spec', function () {
             expect(App\User::where('email', 'some@email.com')->exists())->toBe(false);
         });
     });

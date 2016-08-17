@@ -10,9 +10,9 @@ describe('Laravel context for kahlan specs', function () {
     // because it gets wiped at the end, when
     // we use database migrations wrappers.
     before(function () {
-        // $this->laravel is just a convenient alias for $this->crawler.
         $this->laravel->artisan('migrate');
     });
+
 
     /*
     |--------------------------------------------------------------------------
@@ -25,9 +25,11 @@ describe('Laravel context for kahlan specs', function () {
 
     it('provides application in kahlan instance scope - as $this->app', function () {
         expect($this->app)->toBe(app());
+        expect($this->laravel->app)->toBe(app());
     });
 
     it('binds to the container', function () {
+        expect(app())->toBe($this->app);
         $stub = ['name' => 'stub'];
         $this->app->bind('some_service', function () use ($stub) {
             return ['name' => 'stub'];
@@ -100,8 +102,16 @@ describe('Laravel context for kahlan specs', function () {
         });
     });
 
-    using(['database migrations'], function () {
+    using('without events', function () {
+        it('runs without events on demand', function () {
+            app('events')->listen('test_event', function () {
+                return 'fired';
+            });
+            expect(event('test_event'))->toBe(null);
+        });
+    });
 
+    using(['database migrations'], function () {
         it('can migrate db for...', function () {
             factory(App\User::class)->create(['email' => 'some@email.com']);
             expect(App\User::where('email', 'some@email.com')->exists())->toBe(true);

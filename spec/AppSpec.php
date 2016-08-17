@@ -52,13 +52,35 @@ describe('Laravel context for kahlan specs', function () {
     |--------------------------------------------------------------------------
     | The only difference from the original Laravel's TestCase
     | is in that here you call crawler/assertion methods on
-    | `$this->crawler` helper object rather than `$this`.
+    | `$this->laravel` helper object rather than `$this`.
     |--------------------------------------------------------------------------
     */
-    it('provides the same crawl & assert API as laravel TestCase', function () {
-        $this->crawler->get('/')
-                      ->see('Laravel 5')
-                      ->assertResponseOk();
+    context('It provides the same testing API as laravel TestCase', function () {
+        it('crawls & asserts', function () {
+            $this->laravel->get('/')
+                          ->see('Laravel 5')
+                          ->assertResponseOk();
+        });
+
+        it('interacts with database', function () {
+            factory(App\User::class)->create(['email' => 'test@email.com']);
+            $this->laravel->seeInDatabase('users', ['email' => 'test@email.com']);
+        });
+
+        it('interacts with session', function () {
+            $this->laravel->withSession(['session_test' => 'working'])
+                          ->get('/session-test')
+                          ->see('working')
+                          ->seeInSession(['session_test' => 'working']);
+        });
+
+        it('interacts with app services', function () {
+            $this->laravel->expectsEvents('event_one', 'event_two')
+                          ->doesntExpectEvents('event_three');
+
+            event('event_one');
+            event('event_two');
+        });
     });
 
     /*
@@ -89,15 +111,15 @@ describe('Laravel context for kahlan specs', function () {
 
     using('without middleware', function () {
         it('runs without middleware on demand (auth)', function () {
-            $this->crawler
-                 ->get('admin')
+            $this->laravel
+                 ->get('/admin')
                  ->see('admin area for logged in user only');
         });
 
         it('runs without middleware on demand (guest)', function () {
             $this->laravel
                  ->actingAs(factory(App\User::class)->create())
-                 ->get('login')
+                 ->get('/login')
                  ->see('login form for guests only');
         });
     });
